@@ -53,4 +53,28 @@
 ## Push changes to remote
 ```
    git push --set-upstream origin main
-```
+...
+## ERROR fatal: could not open '.git/COMMIT_EDITMSG': Permission denied
+Go to your repo folder:
+
+cd path/to/your/repo
+
+
+Check permissions:
+
+ls -ld .git
+
+
+If .git is owned by root or another user, fix ownership:
+
+sudo chown -R $USER:$USER .git
+
+
+Then give proper permissions:
+
+chmod -R u+rwX .git
+
+
+Now try committing again:
+
+git commit -m "your message"
